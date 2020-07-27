@@ -17,10 +17,23 @@ function CompanyList() {
       if (companySearch === null) getCompanyList();
   },[companySearch]);
 
+  // React.useEffect(() =>{
+  //   async function getCompanySearch(){
+  //     let company = await JoblyApi.getCompany(companySearch);
+  //     setCompanies([company]);
+  //   }
+  //   if (companySearch !== null) getCompanySearch();
+  // },[companySearch]);
+
   React.useEffect(() =>{
+    const companySearchHandles = companies.filter(eachCompany => eachCompany.handle.includes(companySearch));
+
     async function getCompanySearch(){
-      let company = await JoblyApi.getCompany(companySearch);
-      setCompanies([company]);
+      let companySearchResults = [];
+      companySearchHandles.forEach((companyByHandle) =>
+        companySearchResults.push(JoblyApi.getCompany(companyByHandle.handle))
+      )
+      Promise.all(companySearchResults).then((companiesFound)=>setCompanies(companiesFound))
     }
     if (companySearch !== null) getCompanySearch();
   },[companySearch]);

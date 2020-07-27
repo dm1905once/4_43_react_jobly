@@ -23,10 +23,9 @@ function JobList() {
     
     async function getJobSearch(){
       let jobSearchResults = [];
-      jobSearchIds.forEach(async function(jobId) {
-        jobSearchResults.push(JoblyApi.getJobByID(jobId.id));
-      });
-
+      jobSearchIds.forEach((jobId) =>
+        jobSearchResults.push(JoblyApi.getJobByID(jobId.id))
+      );
       Promise.all(jobSearchResults).then((jobsFound) => setJobs(jobsFound));
     }
     if (jobSearch !== null) getJobSearch();
