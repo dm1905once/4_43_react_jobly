@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+img {
+    width: 1400px;
+    height: auto;
+    opacity: 0.5;
+}
+
+.Home-ImgContainer {
+    position: relative;
+}
+
+.Home-ImgCredit {
+    position: absolute;
+    bottom: 8px;
+    right: 200px;
+    font-size: 12px;
+}

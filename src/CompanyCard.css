@@ -1,0 +1,14 @@
+.CompanyCard-CardTitle {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+a.CompanyCard-CardLink {
+    text-decoration: none;
+    color: #212529;
+}
+
+a.CompanyCard-CardLink:hover {
+    text-decoration: none;
+    color: blue;
+}

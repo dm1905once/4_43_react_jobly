@@ -1,35 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
-import Home from './Home';
 import NavBar from './NavBar';
-import JobList from './JobList';
+import Routes from './Routes';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <div>
         <NavBar />
-        <main>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-             <Route exact path="/jobs">
-              <JobList />
-            </Route>
-            <Route exact path="/companies">
-              {/* <CompanyList /> */}
-            </Route>
-            {/* <Route path="/companies/:id">
-              <Item cantFind="/companies" />
-            </Route> */}
-            <Route>
-              <p>Hmmm. I can't seem to find what you want.</p>
-            </Route>
-          </Switch>
-        </main>
-      </BrowserRouter>
+        <Routes />
+      </div>
     </div>
   );
 }

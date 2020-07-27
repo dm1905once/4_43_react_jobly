@@ -1,8 +1,17 @@
 import React from 'react';
-// import './Home.css';
+import homeBackgroundPic from "./imgs/free-to-use-sounds-kOuCX7fh50U-unsplash.jpg";
+import './Home.css';
 
 function Home(){
-    return(<h1>Jobly Home</h1>);
+    return(
+        <div>
+            <h1>Welcome to Jobly</h1>
+            <div className="Home-ImgContainer">
+                <img src={homeBackgroundPic} alt="Home page background"/>
+                <div className="Home-ImgCredit">Photo by free-to-use-sounds on Unsplash</div>
+            </div>
+        </div>
+    );
 }
 
 export default Home;
