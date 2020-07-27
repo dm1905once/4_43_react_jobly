@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
 // import "./Company.css";
-import { CardGroup, Card, CardHeader, CardBody, CardTitle, CardText, CardImg, CardLink, ListGroup, ListGroupItem } from "reactstrap";
+import { Card, CardHeader, CardText } from "reactstrap";
 
 
 function Company() {

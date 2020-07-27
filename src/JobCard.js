@@ -1,6 +1,6 @@
 import React from "react";
 import "./JobCard.css";
-import { CardGroup, Card, CardHeader, CardBody, CardTitle, Button, CardSubtitle, CardLink, ListGroup, ListGroupItem } from "reactstrap";
+import { Card, CardHeader, CardBody, CardTitle, ListGroup, ListGroupItem } from "reactstrap";
 
 function alertClicked() {
     alert('You clicked the third ListGroupItem');

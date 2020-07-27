@@ -29,7 +29,7 @@ function JobList() {
       Promise.all(jobSearchResults).then((jobsFound) => setJobs(jobsFound));
     }
     if (jobSearch !== null) getJobSearch();
-  },[jobSearch]);
+  },[jobSearch, jobs]);
 
   function handleSearch(e){
     e.preventDefault();
@@ -59,7 +59,7 @@ function JobList() {
         </Form>
       </Container>
      <CardGroup>
-      {jobs.map(job => <JobCard job={job} />)}
+      {jobs.map(job => <JobCard job={job} key={job.id}/>)}
      </CardGroup>
     </div>
   );
