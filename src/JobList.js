@@ -9,14 +9,18 @@ function JobList() {
 
   const [ jobs, setJobs ] = React.useState([]);
   const [ jobSearch, setJobSearch ] = React.useState(null);
-  // const [ authError, setAuthError ] = React.useState("");
+  const [ authError, setAuthError ] = React.useState("");
 
   React.useEffect(()=>{
-    async function getJobs(){
-      const allJobs = await JoblyApi.getJobs();
-      if (jobSearch === null) setJobs(allJobs);
-    }
-    getJobs();
+      async function getJobs(){
+        try{
+          const allJobs = await JoblyApi.getJobs();
+          if (jobSearch === null) setJobs(allJobs);
+        } catch(e){
+          setAuthError(e);
+        }
+      }
+      getJobs();
   },[jobSearch]);
 
   React.useEffect(() =>{
@@ -32,7 +36,7 @@ function JobList() {
       }
       if (jobSearch !== null) getJobSearch();
     } catch(e) {
-      console.log(e);
+      console.log("aaa", e);
     }
   },[jobSearch, jobs]);
 
@@ -49,8 +53,8 @@ function JobList() {
 
   return (
     <div>
-     <h1>Jobs:</h1>
-     {/* <p>{(authError !== "")? authError: ""}</p> */}
+     <h1>Jobs</h1>
+     <h3>{(authError !== "")? authError: ""}</h3>
       <Container>
         <Form onSubmit={handleSearch}>
           <InputGroup>

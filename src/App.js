@@ -7,7 +7,15 @@ function App() {
   const [ isAuthenticated, setIsAuthenticated ] = React.useState(false);
 
   React.useEffect(()=> {
-    (localStorage.getItem("_token"))? doAuthenticate(): undoAuthenticate();
+    if (localStorage.getItem("_token")){
+      //***** Question!!! *** */
+      // This is where I should be able to verify the token
+      // But, the server does not provide a verify route (only middleware)
+      // How could I possibly decode the token from the client? Am I missing something?
+      doAuthenticate();
+    } else {
+      undoAuthenticate();
+    }
   },[])
 
   function doAuthenticate(){

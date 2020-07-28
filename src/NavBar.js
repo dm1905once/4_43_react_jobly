@@ -12,23 +12,28 @@ function NavBar({isAuthenticated}) {
         <Nav className="ml-auto" navbar>
           {(isAuthenticated)? 
           <>
-              <NavItem>
-                <NavLink to="/logout">Logout</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/profile">Profile</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/companies">Companies</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/jobs">Jobs</NavLink>
-              </NavItem>
+                <NavItem>
+                  <NavLink to="/logout">Logout</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/profile">Profile</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/companies">Companies</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/jobs">Jobs</NavLink>
+                </NavItem>
             </>
             :
-              <NavItem>
-                <NavLink to="/login">Login</NavLink>
-              </NavItem>
+            <>
+                <NavItem>
+                  <NavLink to="/login">Login</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/register">Register</NavLink>
+                </NavItem>
+            </>
           }
         </Nav>
       </Navbar>

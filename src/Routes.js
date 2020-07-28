@@ -4,6 +4,7 @@ import Home from './Home';
 import JobList from './JobList';
 import CompanyList from './CompanyList';
 import Company from './Company';
+import Register from './Register';
 import Login from './Login';
 import Logout from './Logout';
 import Profile from './Profile';
@@ -25,6 +26,9 @@ function Routes({doAuthenticate, undoAuthenticate}) {
             </Route>
             <Route path="/login">
                 <Login doAuthenticate={doAuthenticate}/>
+            </Route>
+            <Route path="/register">
+                <Register doAuthenticate={doAuthenticate}/>
             </Route>
             <Route path="/logout">
                 <Logout undoAuthenticate={undoAuthenticate}/>
