@@ -1,13 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from './Home';
 import JobList from './JobList';
 import CompanyList from './CompanyList';
 import Company from './Company';
 import Login from './Login';
+import Logout from './Logout';
 import Profile from './Profile';
 
-function Routes() {
+function Routes({doAuthenticate, undoAuthenticate}) {
     return (
         <Switch>
             <Route exact path="/">
@@ -23,7 +24,10 @@ function Routes() {
                 <Company cantFind="/companies" />
             </Route>
             <Route path="/login">
-                <Login />
+                <Login doAuthenticate={doAuthenticate}/>
+            </Route>
+            <Route path="/logout">
+                <Logout undoAuthenticate={undoAuthenticate}/>
             </Route>
             <Route path="/profile">
                 <Profile />

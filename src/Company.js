@@ -1,22 +1,23 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
+import JobCard from "./JobCard";
 // import "./Company.css";
-import { Card, CardHeader, CardText } from "reactstrap";
+import { Card, CardHeader, CardText, CardGroup } from "reactstrap";
 
 
 function Company() {
   const { handle } = useParams();
   const [company, setCompany] = React.useState();
-  const [jobs, setJobs] = React.useState();
 
   React.useEffect(() => {
+    // Get company details
     async function getCompanyDetails(){
       let company = await JoblyApi.getCompany(handle);
-      // let jobs = await JoblyApi.getCompany(handle);
       setCompany(company);
     }
     getCompanyDetails();
+
   }, [handle]);
 
   return (
@@ -25,9 +26,10 @@ function Company() {
         <CardHeader>{(company)? company.name : "Retrieving..."}</CardHeader>
         <CardText>{(company)? company.description : "Retrieving..."}</CardText>
       </Card>
-      <h4>Jobs...</h4>
-      <p>...to be added</p>
-       {/* Job  list to be added here*/}
+      <p>Jobs posted by this company: </p>
+      <CardGroup>
+        {(company)? company.jobs.map(job => <JobCard job={job} key={job.id}/>): "Finding jobs..."}
+      </CardGroup>
     </div>
   );
 }

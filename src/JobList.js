@@ -9,6 +9,7 @@ function JobList() {
 
   const [ jobs, setJobs ] = React.useState([]);
   const [ jobSearch, setJobSearch ] = React.useState(null);
+  // const [ authError, setAuthError ] = React.useState("");
 
   React.useEffect(()=>{
     async function getJobs(){
@@ -21,14 +22,18 @@ function JobList() {
   React.useEffect(() =>{
     const jobSearchIds = jobs.filter(eachJob => eachJob.title.toLowerCase().includes(jobSearch))
     
-    async function getJobSearch(){
-      let jobSearchResults = [];
-      jobSearchIds.forEach((jobId) =>
-        jobSearchResults.push(JoblyApi.getJobByID(jobId.id))
-      );
-      Promise.all(jobSearchResults).then((jobsFound) => setJobs(jobsFound));
+    try {
+      async function getJobSearch(){
+        let jobSearchResults = [];
+        jobSearchIds.forEach((jobId) =>
+          jobSearchResults.push(JoblyApi.getJobByID(jobId.id))
+        );
+        Promise.all(jobSearchResults).then((jobsFound) => setJobs(jobsFound));
+      }
+      if (jobSearch !== null) getJobSearch();
+    } catch(e) {
+      console.log(e);
     }
-    if (jobSearch !== null) getJobSearch();
   },[jobSearch, jobs]);
 
   function handleSearch(e){
@@ -45,15 +50,16 @@ function JobList() {
   return (
     <div>
      <h1>Jobs:</h1>
+     {/* <p>{(authError !== "")? authError: ""}</p> */}
       <Container>
         <Form onSubmit={handleSearch}>
           <InputGroup>
             <InputGroupAddon addonType="prepend">
-              <Button variant="success">Search by Job Title</Button>
+              <Button color="success">Search by Job Title</Button>
             </InputGroupAddon>
             <Input type="text" name="searchByTitle" id="searchByTitle"/>
             <InputGroupAddon addonType="append">
-              <Button variant="secondary" onClick={handleReset}>Reset</Button>
+              <Button  onClick={handleReset}>Reset</Button>
             </InputGroupAddon>
           </InputGroup>
         </Form>

@@ -16,7 +16,7 @@ function JobCard({job}) {
                 <ListGroup >
                     <ListGroupItem><b>Salary: </b>{job.salary}</ListGroupItem>
                     <ListGroupItem><b>Equity: </b>{job.equity}</ListGroupItem>
-                    <ListGroupItem action variant="primary" onClick={alertClicked}>Apply</ListGroupItem>
+                    <ListGroupItem action color="primary" onClick={alertClicked}>Apply</ListGroupItem>
                 </ListGroup> 
             </CardBody> 
         </Card>

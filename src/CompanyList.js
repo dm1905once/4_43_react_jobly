@@ -49,11 +49,11 @@ function CompanyList() {
           <Form onSubmit={handleSearch}>
             <InputGroup>
               <InputGroupAddon addonType="prepend">
-                <Button variant="success">Search by Company Handle</Button>
+                <Button color="primary">Search by Company Handle</Button>
               </InputGroupAddon>
               <Input type="text" name="searchByHandle" id="searchByHandle"/>
               <InputGroupAddon addonType="append">
-                <Button variant="secondary" onClick={handleReset}>Reset</Button>
+                <Button  onClick={handleReset}>Reset</Button>
               </InputGroupAddon>
             </InputGroup>
           </Form>

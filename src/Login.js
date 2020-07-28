@@ -1,11 +1,55 @@
 import React from "react";
-// import "./Login.css";
+import "./Login.css";
+import { Container, Form, Input, Button, FormGroup, Label, Row, Col } from "reactstrap";
+import JoblyApi from "./JoblyApi";
+import { useHistory } from "react-router-dom";
 
 
-function Login() {
+function Login({doAuthenticate}) {
+  let history = useHistory();
+  const [ authError, setAuthError ] = React.useState("");
+
+  async function authenticate(e){
+    e.preventDefault();
+    try {
+      const userToken = await JoblyApi.authenticateUser(
+        {
+          username: e.target.username.value,
+          password: e.target.password.value
+        }
+      )
+      localStorage.setItem("_token", userToken);
+      doAuthenticate();
+      history.push("/profile");
+    } catch(e) {
+      setAuthError(e[0]);
+    }
+  }
+
   return (
     <div>
-        <h1>Login</h1>
+        <h2>Login</h2>
+
+      <Container>
+      <Row>
+        <Col sm={{ size: 4, offset: 4 }}>
+          <Form onSubmit={authenticate}>
+            <FormGroup>
+              <Label for="username">Username</Label>
+              <Input type="text" name="username" id="username" onChange={()=> setAuthError("")} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input type="password" name="password" id="password" onChange={()=> setAuthError("")}/>
+            </FormGroup>
+            <p>{(authError)? authError: ""}</p>
+            <Button color="success">Submit</Button>
+          </Form>
+        </Col>
+      </Row>
+        
+      </Container>
+
     </div>
   );
 }
