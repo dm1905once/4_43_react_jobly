@@ -25,13 +25,13 @@ function Routes({doAuthenticate, undoAuthenticate}) {
                 <Company cantFind="/companies" />
             </Route>
             <Route path="/login">
-                <Login doAuthenticate={doAuthenticate}/>
+                <Login />
             </Route>
             <Route path="/register">
-                <Register doAuthenticate={doAuthenticate}/>
+                <Register />
             </Route>
             <Route path="/logout">
-                <Logout undoAuthenticate={undoAuthenticate}/>
+                <Logout />
             </Route>
             <Route path="/profile">
                 <Profile />

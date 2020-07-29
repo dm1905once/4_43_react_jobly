@@ -33,7 +33,7 @@ function Login() {
     try {
       const userData = await JoblyApi.getUser(username);
       doAuth(userData);
-      history.push("/profile");
+      history.push("/jobs");
     } catch(e) {
       setAuthError(e[0]);
     }

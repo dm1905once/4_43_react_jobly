@@ -69,7 +69,7 @@ function JobList() {
         </Form>
       </Container>
      <CardGroup>
-      {jobs.map(job => <JobCard job={job} key={job.id}/>)}
+      {jobs.map(job => <JobCard job={job} key={job.id} />)}
      </CardGroup>
     </div>
   );

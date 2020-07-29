@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Profile.css";
 import ProfileForm from "./ProfileForm";
 import { Container, Row, Col, Alert } from "reactstrap";
 import JoblyApi from "./JoblyApi";
@@ -9,7 +8,6 @@ import UserContext from "./UserContext";
 function Profile() {
   let history = useHistory();
   const [ formErrors, setFormErrors ] = React.useState([]);
-  const [ userInfo, setUserInfo ] = React.useState({});
   const [ updatedStatus, setUpdatedStatus ] = React.useState(false);
   const { appUser, doAuth } = React.useContext(UserContext);
 
