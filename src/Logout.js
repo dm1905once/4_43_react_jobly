@@ -1,10 +1,12 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import UserContext from "./UserContext";
 
 
-function Logout({undoAuthenticate}) {
+function Logout() {
+    const {undoAuth} = React.useContext(UserContext);
     localStorage.removeItem("_token");
-    undoAuthenticate();
+    undoAuth();
     return (<Redirect to="/"/> );
 }
 

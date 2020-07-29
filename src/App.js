@@ -2,36 +2,35 @@ import React from 'react';
 import './App.css';
 import NavBar from './NavBar';
 import Routes from './Routes';
+import UserContext from './UserContext';
 
 function App() {
   const [ isAuthenticated, setIsAuthenticated ] = React.useState(false);
+  const [ appUser, setAppUser ] = React.useState({});
 
   React.useEffect(()=> {
     if (localStorage.getItem("_token")){
-      //***** Question!!! *** */
-      // This is where I should be able to verify the token
-      // But, the server does not provide a verify route (only middleware)
-      // How could I possibly decode the token from the client? Am I missing something?
-      doAuthenticate();
+      setIsAuthenticated(true);
     } else {
-      undoAuthenticate();
+      setIsAuthenticated(false);
     }
   },[])
 
-  function doAuthenticate(){
+  function doAuth(userData){
+    setAppUser(userData);
     setIsAuthenticated(true);
   }
 
-  function undoAuthenticate(){
+  function undoAuth(){
     setIsAuthenticated(false);
   }
 
   return (
     <div className="App">
-      <div>
+      <UserContext.Provider value={{doAuth, undoAuth, appUser}}>
         <NavBar isAuthenticated={isAuthenticated}/>
-        <Routes doAuthenticate={doAuthenticate} undoAuthenticate={undoAuthenticate}/>
-      </div>
+        <Routes />
+      </UserContext.Provider>
     </div>
   );
 }

@@ -28,7 +28,7 @@ function CompanyList() {
       Promise.all(companySearchResults).then((companiesFound)=>setCompanies(companiesFound))
     }
     if (companySearch !== null) getCompanySearch();
-  },[companySearch, companies]);
+  },[companySearch]);
 
   function handleSearch(e){
     e.preventDefault();

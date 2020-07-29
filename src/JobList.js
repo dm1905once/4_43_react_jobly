@@ -38,7 +38,7 @@ function JobList() {
     } catch(e) {
       console.log("aaa", e);
     }
-  },[jobSearch, jobs]);
+  },[jobSearch]);
 
   function handleSearch(e){
     e.preventDefault();

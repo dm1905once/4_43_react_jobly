@@ -1,7 +1,8 @@
 import React from "react";
 import "./Login.css";
-import { Container, Form, Input, Button, FormGroup, Label, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import JoblyApi from "./JoblyApi";
+import RegisterForm from "./RegisterForm";
 import { useHistory } from "react-router-dom";
 
 
@@ -36,29 +37,7 @@ function Register({doAuthenticate}) {
       <Container>
       <Row>
         <Col sm={{ size: 4, offset: 4 }}>
-          <Form onSubmit={register}>
-            <FormGroup>
-              <Label for="username">UserName</Label>
-              <Input type="text" name="username" id="username" onChange={()=> setFormErrors([])} />
-            </FormGroup>
-            <FormGroup>
-              <Label for="firstname">First Name</Label>
-              <Input type="text" name="firstname" id="firstname" onChange={()=> setFormErrors([])} />
-            </FormGroup>
-            <FormGroup>
-              <Label for="lastname">Last Name</Label>
-              <Input type="text" name="lastname" id="lastname" onChange={()=> setFormErrors([])} />
-            </FormGroup>
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input type="email" name="email" id="email" onChange={()=> setFormErrors([])} />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input type="password" name="password" id="password" onChange={()=> setFormErrors([])}/>
-            </FormGroup>
-            <Button color="success">Submit</Button>
-          </Form>
+          <RegisterForm register={register} setFormErrors={setFormErrors}/>
         </Col>
       </Row>
       <Row>
